@@ -1,0 +1,21 @@
+module `mname` (
+	//; my $signal_width=parameter(Name=>'SIGWIDTH', Val=>16);
+	
+	input logic [`$data_width-1`:0] signal_A ,
+	input logic [`$data_width-1`:0] signal_B ,
+	input logic signal_Carry,
+	input logic signal_OpSelect,
+
+	output logic [`$signal_width-1`:0] signal_Z
+	);
+
+  always @(signal_A, signal_B ,signal_OpSelect)
+    begin
+        unique case (signal_OpSelect)
+          1'b0 : signal_Z = signal_A + signal_B;
+          1'b1 : signal_Z = signal_A * signal_B;
+        endcase
+   end
+   
+endmodule
+
